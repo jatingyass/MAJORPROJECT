@@ -7,10 +7,9 @@ const listingSchema = new Schema({
         required: true,
     },
     description: String,
-    image: {type: String,
-        default: "https://images.unsplash.com/photo-1593696954577-ab3d39317b97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1466&q=80",
-        set: (v) => v === "" ? "https://images.unsplash.com/photo-1593696954577-ab3d39317b97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1466&q=80" 
-        : v,
+    image: {
+       url: String,
+       filename: String, 
     },
     price: Number,
     location: String,
@@ -21,6 +20,25 @@ const listingSchema = new Schema({
             ref: "Review",
         },
     ],
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+    },
+    geometry:  {
+        type: {
+          type: String, // Don't do `{ location: { type: String } }`
+          enum: ['Point'], // 'location.type' must be 'Point'
+          required: true
+        },
+        coordinates: {
+          type: [Number],
+          required: true
+        }
+      },
+      // category: {
+      //   type: String,
+      //   enum: ["mountains", "arctic", "farms", "deserts"]
+      // }
 });
 
 

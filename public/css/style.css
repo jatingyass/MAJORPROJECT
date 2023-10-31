@@ -116,3 +116,13 @@ border: none !important;
     padding-right: 0;
     
 }
+.editimg{
+    /* height: 200px; */
+    width: 250px;
+}
+
+/* Map */
+#map {
+    height: 400px;
+    width: 80vh;
+ }
