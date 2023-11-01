@@ -2,7 +2,7 @@ if(process.env.NODE_ENV != "production"){
     require('dotenv').config();
 }
 
-console.log(process.env.SECRET);
+// console.log(process.env.SECRET);
 
 const express = require("express");
 const app = express();
@@ -23,6 +23,7 @@ const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 
 const dbUrl = process.env.ATLASDB_URL;
+
 
 main()
     .then(() => {
