@@ -11,7 +11,12 @@ body{
 }
 .navbar{
     height: 5rem;
-    background-color: #fff;
+    background-color: #F0EEEE;
+}
+
+.container-fluid {
+    background-color: #F0EEEE;
+    margin-bottom: auto;
 }
 .fa-compass{
     color: #fe424d;
@@ -126,3 +131,4 @@ border: none !important;
     height: 400px;
     width: 80vh;
  }
+

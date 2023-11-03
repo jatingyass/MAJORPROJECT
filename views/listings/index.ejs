@@ -3,14 +3,20 @@
 <style>
       #filters{
         display: flex;
-        flex-wrap: wrap;
+        /* flex-wrap: wrap; */
+        overflow: scroll;
         align-items: center;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      #filters::-webkit-scrollbar{
+           display: none;
       }
       .filter{
         text-align: center;
         margin-right: 2rem;
         margin-top: 2rem;
-        opacity: 0.7;
+        opacity: 0.8;
       }
       .filter:hover {
         opacity: 1;
@@ -22,15 +28,37 @@
       .tax-info {
         display: none;
       }
-      .tax-toggle{
-        border: 1px solid black;
-        border-radius: 1rem;
-        height: 3.25rem;
-        padding: 1rem;
-        margin-left: 2rem;
-        display: flex;
-        align-items: center;
-      }
+ 
+    /* my sytling */
+ .tax-toggle {
+  border: 1px solid black;
+  border-radius: 1rem;
+  height: 3.25rem;
+  padding: 1rem;
+  margin-left: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.form-check-label {
+  margin-left: 1rem; 
+}
+
+@media (max-width: 991px) {
+  .form-check-label {
+    display: none; 
+    content: '\2713';
+  }
+
+  .form-check-label::before {
+    /* content: '\2713'; Unicode checkmark character */
+    display: inline-block;
+    width: 20px; 
+    height: 20px; 
+  }
+}
+
+
 </style>
     <div id="filters">
         <div class="filter">
@@ -69,16 +97,16 @@
             <div><i class="fa-regular fa-snowflake"></i></div>
            <p>Arctic</p>
         </div>
-        <div class="filter">
+        <!-- <div class="filter">
             <div><i class="fa-solid fa-igloo"></i></div>
            <p>Domes</p>
-        </div>
-        <div class="filter">
+        </div> -->
+        <!-- <div class="filter">
             <div><i class="fa-solid fa-ship"></i></div>
            <p>Boats</p>
-        </div>
+        </div> -->
 
-        <div class="tax-toggle">
+        <div class="tax-toggle ms-auto ">
             <div class="form-check-reverse form-switch">
                 <input 
                  class="form-check-input"
