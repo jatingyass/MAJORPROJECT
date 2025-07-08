@@ -56,15 +56,29 @@ store.on("error", () => {
     console.log("ERROR in MONGO SESSION STORE", err);
 });
 
+// const sessionOptions = {
+//     store,
+//     secret: process.env.SECRET,
+//     resave: false,
+//     saveUninitialized: true,
+//     cookie: {
+//         expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
+//         maxAge: 7 * 24 * 60 * 60 * 1000,
+//         httpOnly: true,
+//         sameSite: "lax",
+//     },
+// };
 const sessionOptions = {
     store,
     secret: process.env.SECRET,
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false, // ✅ Don't create empty sessions
     cookie: {
         expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
         maxAge: 7 * 24 * 60 * 60 * 1000,
         httpOnly: true,
+        sameSite: "lax", 
+     // secure: true,   
     },
 };
 
@@ -114,8 +128,9 @@ app.all("*", (req, res, next) => {
 
 app.use((err, req, res, next) => {
     let { statusCode = 500, message = "Somthimg went wrong!" } = err;
-    res.status(statusCode).render("error.ejs", { message });
+    // res.status(statusCode).render("error.ejs", { message });
     // res.status(statusCode).send(message);
+    console.log("🧨 Error caught by error handler:", err);
 
 });
 
